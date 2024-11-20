@@ -1,0 +1,35 @@
+{"log": {"loglevel": "warning"},"inbounds": [{
+            "listen": "/run/old/xray.friend,0660", //监听unix socket
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "" //显然要uuid, xray uuid
+                    }
+                ],
+                "decryption": "none"
+				"flow": "xtls-rprx-vision", //流控
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "dest": "speed.cloudflare.com:443",
+                    "serverNames": [
+                        "speed.cloudflare.com"
+                    ],
+                    "privateKey": "", // 运行 `xray x25519` 生成
+                    "shortIds": [
+                        "0123456789abcdef" //16位长度的hex
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        }
+    ]
+}
