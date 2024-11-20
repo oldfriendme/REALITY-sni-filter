@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: make
+      run: |
+       mkdir ./autobuild
+       make
+       mv ./sni-filter ./autobuild/sni-filter
+    - name: uploadPKG 
+      uses: actions/upload-artifact@v4
+      with:
+        name: autobuild
+        path: ./autobuild
