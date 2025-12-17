@@ -14,7 +14,8 @@ make
 
 ### Usage
 ```
-sni-filter -listen [0.0.0.0] [443] -sni [www.example.com]
+sni-filter -L=tcp://0.0.0.0:443 -F=tcp://127.0.0.1:443 -S=www.example.com
+sni-filter -L=tcp://0.0.0.0:443 -F=unix:///run/unix.socket -S=www.example.com
 ```
 
 ### 功能
