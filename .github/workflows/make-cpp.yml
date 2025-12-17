@@ -11,11 +11,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: actions/setup-go@v4
     - name: make
       run: |
        mkdir ./autobuild
        make
-       mv ./sni-filter ./autobuild/sni-filter
+       mv ./sni-filter* ./autobuild/
     - name: uploadPKG 
       uses: actions/upload-artifact@v4
       with:
